@@ -1,0 +1,6 @@
+git init : initialize a git 
+git status : gives the status
+git add . : stage all files and changes
+git commit -m 'your message' : commit with a message
+git remote add origin 'URL' add the url to remote repository
+git push -u origin master : pushes to the url
