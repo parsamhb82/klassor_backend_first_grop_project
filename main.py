@@ -89,3 +89,128 @@ def print_main_soduku(main_soduku : list) :
                     if j == 8:
                         print()
             print(29 * "=")
+
+
+
+n = random.randint(0,1)
+easy_board1 = [
+    [2, 0, 1, 8, 0, 0, 0, 0, 4],
+    [8, 9, 0, 3, 0, 0, 2, 6, 1],
+    [0, 6, 7, 1, 0, 9, 0, 0, 5],
+    [0, 0, 8, 0, 0, 6, 0, 0, 0],
+    [0, 0, 3, 5, 0, 0, 6, 0, 0],
+    [0, 0, 2, 7, 4, 3, 0, 9, 8],
+    [0, 0, 0, 0, 0, 0, 0, 1, 9],
+    [5, 0, 9, 0, 3, 2, 0, 0, 6],
+    [0, 0, 0, 0, 1, 7, 4, 5, 2]
+]
+easy_board2 = [
+    [0, 0, 0, 1, 0, 0, 0, 0, 3],
+    [2, 1, 8, 0, 0, 6, 7, 0, 4],
+    [7, 5, 0, 0, 0, 4, 0, 6, 0],
+    [0, 4, 9, 8, 3, 1, 2, 0, 0],
+    [5, 3, 1, 0, 0, 0, 0, 4, 8],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [9, 6, 2, 0, 0, 0, 0, 0, 0],
+    [0, 8, 5, 7, 6, 3, 4, 9, 0],
+    [0, 0, 4, 9, 2, 0, 5, 1, 0]
+]
+mid_board1 = [
+    [4, 0, 2, 8, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 7, 8, 0],
+    [6, 0, 0, 0, 9, 0, 0, 5, 0],
+    [2, 0, 0, 3, 0, 0, 0, 9, 0],
+    [0, 0, 4, 1, 5, 0, 0, 0, 0],
+    [0, 1, 7, 0, 2, 0, 0, 4, 3],
+    [0, 0, 3, 5, 8, 0, 9, 7, 0],
+    [5, 0, 9, 4, 0, 7, 2, 6, 1],
+    [7, 4, 6, 9, 1, 0, 8, 0, 5]
+]
+mid_board2 = [
+    [0, 0, 0, 0, 8, 0, 0, 0, 3],
+    [0, 7, 3, 0, 0, 0, 1, 0, 5],
+    [4, 6, 0, 1, 0, 0, 2, 0, 0],
+    [0, 0, 0, 0, 5, 0, 0, 7, 6],
+    [0, 3, 2, 8, 6, 1, 0, 4, 9],
+    [6, 9, 5, 7, 0, 3, 0, 2, 1],
+    [0, 0, 4, 0, 0, 0, 6, 0, 0],
+    [0, 0, 0, 3, 0, 4, 0, 0, 2],
+    [3, 5, 0, 0, 2, 8, 0, 0, 0]
+]
+hard_board1 = [
+    [5, 9, 0, 8, 2, 7, 0, 0, 0],
+    [0, 1, 0, 6, 0, 9, 0, 5, 0],
+    [6, 2, 0, 5, 0, 0, 0, 0, 4],
+    [0, 0, 0, 0, 0, 0, 0, 0, 2],
+    [0, 6, 0, 0, 0, 0, 7, 0, 0],
+    [2, 4, 8, 0, 5, 0, 1, 0, 0],
+    [0, 0, 1, 9, 0, 0, 3, 0, 8],
+    [0, 0, 0, 1, 0, 0, 0, 0, 0],
+    [9, 0, 0, 0, 0, 0, 5, 6, 1]
+]
+
+hard_board2 = [
+    [4, 7, 0, 0, 0, 0, 6, 0, 8],
+    [0, 6, 2, 0, 0, 0, 0, 4, 0],
+    [0, 0, 0, 0, 0, 4, 2, 0, 1],
+    [8, 9, 0, 5, 0, 6, 0, 3, 7],
+    [0, 0, 6, 0, 0, 0, 8, 0, 5],
+    [0, 0, 0, 0, 0, 1, 0, 0, 2],
+    [9, 0, 0, 0, 0, 0, 5, 8, 0],
+    [6, 8, 7, 0, 0, 0, 0, 0, 0],
+    [0, 5, 0, 0, 6, 3, 0, 0, 0]
+]
+
+
+easy_boards = [easy_board1, easy_board2]
+mid_boards = [mid_board1, mid_board2]
+hard_boards = [hard_board1, hard_board2]
+level = input("inset your difficulity Easy | Medium | Hard: ")
+if level == "Easy":
+    main_soduku = easy_boards[n]
+elif level == "Medium":
+    main_soduku = mid_boards[n]
+elif level == "Hard":
+    main_soduku = hard_boards[n]
+else:
+    print("Invalid level")
+    exit()
+
+
+
+
+
+print_main_soduku(main_soduku)
+print('please give your input indices from 0 to 8')
+initials_list = initails_list_maker(main_soduku)
+while not win_check(main_soduku):
+    approach = input("what do you want to do? clear | insert :" )
+    if approach == 'insert' :
+        print('now tell me which indices you want to insert and what value? x | y | value')
+        x, y, main_soduku = inp(main_soduku, initials_list)
+        if x != -1 :
+            for i in range(9):
+                list_tekrari = []
+                for j in range(9):
+                    list_tekrari = check(main_soduku,main_soduku[i][j],i, j)
+                    if len(list_tekrari) >= 2 :
+                        print(f'conflicts in{list_tekrari[1:]}')
+        print_main_soduku(main_soduku)
+
+            
+    elif approach == 'clear' :
+        print('which indices you want to delete? i | j')
+        clear_board(main_soduku, initials_list)
+        for i in range(9):
+                list_tekrari = []
+                for j in range(9):
+                    list_tekrari = check(main_soduku,main_soduku[i][j],i, j)
+                    if len(list_tekrari) >= 2 :
+                        print(f'conflicts in{list_tekrari[1:]}')
+        print_main_soduku(main_soduku)
+
+    else :
+        print_main_soduku(main_soduku)
+
+        print("wrong approach")
+print("You Won")
