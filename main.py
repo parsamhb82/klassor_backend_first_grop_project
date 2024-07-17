@@ -51,3 +51,41 @@ def initails_list_maker(main_soduku: list) -> list:
             if main_soduku[i][j] != 0 :
                 initials_list.append([i, j])
     return initials_list
+def inp(main_soduku : list, initials_list : list) :
+    x , y , value = map(int, input().split())
+    if x > 8 or y > 8 or x < 0 or y < 0 :
+        print('index input out of range')
+        return -1, -1 , main_soduku
+    if main_soduku[x][y] == 0 :
+        main_soduku[x][y] = value
+        return x, y, main_soduku
+    for i in range (len(initials_list)):
+        if initials_list[i][0] == x and initials_list[i][1] == y:
+            print("can't insert into initials")
+            return -1, -1, main_soduku
+    print("can't insert that number cause this cell is not empty please clear it first")
+    return -1, -1, main_soduku
+
+def print_main_soduku(main_soduku : list) :
+    for i in range(9):
+        if i % 3 != 2:
+            for j in range(9):
+                if j % 3 != 2:
+                    print(f"{main_soduku[i][j]}|", end="")
+                    if j == 8:
+                        print()
+                elif j % 3 == 2:
+                    print(f"{main_soduku[i][j]} |*| ", end="")
+                    if j == 8:
+                        print()
+        elif i % 3 == 2:
+            for j in range(9):
+                if j % 3 != 2:
+                    print(f"{main_soduku[i][j]}|", end="")
+                    if j == 8:
+                        print()
+                elif j % 3 == 2:
+                    print(f"{main_soduku[i][j]} |*| ", end="")
+                    if j == 8:
+                        print()
+            print(29 * "=")
