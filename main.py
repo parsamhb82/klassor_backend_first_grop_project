@@ -25,17 +25,15 @@ def check(main_sudoku, m, x, y):
     
     return list_tekrari
 
-def clear_board(main_soduku : list, initials_list : list):
+def clear_board(main_sudoku: list, initials_list: list):
     x, y = map(int, input().split())
-    if x < 0 or x > 8 or y > 8 or y < 0 :
+    if x < 0 or x > 8 or y < 0 or y > 8:
         print('index input out of range')
         return
-    for lst in (initials_list):## check if this index in initialized 
-        if x == lst[0] and y == lst[1] :
-            print("cant change this index cause its an initial ")
-            return 
-        main_soduku[x][y] = 0
-        return 
+    if [x, y] in initials_list:  # Check if the cell is in the initial list
+        print("Can't change this index because it's an initial value.")
+    else:
+        main_sudoku[x][y] = 0
 def win_check(main_soduko : list) -> bool :
     for i in range(9):
         for j in range(9):
